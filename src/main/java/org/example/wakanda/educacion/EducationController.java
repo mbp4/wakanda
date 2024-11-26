@@ -1,9 +1,11 @@
 package org.example.wakanda.educacion;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
+@RequestMapping("/education")
 public class EducationController {
 
     private final EducationService educationService;
@@ -12,8 +14,18 @@ public class EducationController {
         this.educationService = educationService;
     }
 
-    @GetMapping("/education-status")
-    public String getEducationStatus() {
-        return educationService.getEducationStatus();
+    @GetMapping("/classrooms")
+    public Map<String, String> getConnectedClassrooms() {
+        return educationService.getConnectedClassrooms();
+    }
+
+    @GetMapping("/performance")
+    public Map<String, Integer> getStudentPerformance() {
+        return educationService.getStudentPerformance();
+    }
+
+    @GetMapping("/campus")
+    public Map<String, String> getDigitalCampusStatus() {
+        return educationService.getDigitalCampusStatus();
     }
 }
