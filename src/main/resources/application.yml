@@ -1,0 +1,48 @@
+# Documento para la implementación de los microservicios
+
+# Configuración común para todos los microservicios
+spring:
+  application:
+    name: central-config # Nombre global o del servicio principal
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/ # Dirección del servidor Eureka
+    fetch-registry: true # Habilita la búsqueda de servicios en Eureka
+    register-with-eureka: true # Habilita el registro de este servicio en Eureka
+server:
+  port: 8761 # Puerto del servidor Eureka principal
+
+# Configuración específica para los microservicios
+
+# Microservicio tráfico
+trafico-service:
+  spring:
+    application:
+      name: trafico-service
+  server:
+    port: 8081
+
+# Microservicio residuos
+residuos-service:
+  spring:
+    application:
+      name: residuos-service
+  server:
+    port: 8082
+
+# Microservicio educación
+educacion-service:
+  spring:
+    application:
+      name: educacion-service
+  server:
+    port: 8083
+
+# Microservicio WiFi
+wifi-service:
+  spring:
+    application:
+      name: wifi-service
+  server:
+    port: 8084

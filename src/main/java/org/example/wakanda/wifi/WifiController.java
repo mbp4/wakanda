@@ -1,9 +1,11 @@
 package org.example.wakanda.wifi;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
+@RequestMapping("/wifi")
 public class WifiController {
 
     private final WifiService wifiService;
@@ -12,8 +14,18 @@ public class WifiController {
         this.wifiService = wifiService;
     }
 
-    @GetMapping("/wifi-status")
-    public String getWifiStatus() {
-        return wifiService.getWifiStatus();
+    @GetMapping("/public-wifi")
+    public Map<String, String> getPublicWifi() {
+        return wifiService.getPublicWifi();
+    }
+
+    @GetMapping("/iot-sensors")
+    public Map<String, String> getIoTSensors() {
+        return wifiService.getIoTSensors();
+    }
+
+    @GetMapping("/open-data")
+    public Map<String, String> getOpenDataPlatforms() {
+        return wifiService.getOpenDataPlatforms();
     }
 }
