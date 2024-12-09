@@ -15,11 +15,14 @@ public class OcioService {
         eventos.put("Concierto de Rock", "Finalizado");
         eventos.put("Feria de Antigüedades", "Activo");
         eventos.put("Mercadillo Navideño", "Proximamente");
+        eventos.put("Tour por el laboratorio", "Abierto");
+
 
         espacios.put("Museo Histórico", "Abierto");
         espacios.put("Centro Cultural", "Cerrado por mantenimiento");
         espacios.put("Museo Black Panther", "Cerrado por mantenimiento");
-        espacios.put("Centro de reclutamiento", "Abierto");
+        espacios.put("Centro de reclutamiento de Dora Milaje", "Abierto");
+        espacios.put("Centro de entrenamiento", "En mantenimiento");
     }
 
     public Map<String, String> getEventosCulturales() {
