@@ -46,3 +46,36 @@ wifi-service:
       name: wifi-service
   server:
     port: 8084
+
+# Microservicio Vigilancia
+vigilancia-service:
+  spring:
+    application:
+      name: vigilancia-service
+  server:
+    port: 8085
+
+# Microservicio Ocio
+ocio-service:
+  spring:
+    application:
+      name: ocio-service
+    server:
+      port: 8087
+
+# Microservicio Luz
+luz-service:
+  spring:
+    application:
+      name: luz-service
+    server:
+      port: 8088
+
+# Microservicio Gobierno
+gobierno-service:
+  spring:
+    application:
+      name: gobierno-service
+    server:
+      port: 8089
+

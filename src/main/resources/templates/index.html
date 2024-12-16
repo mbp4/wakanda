@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa Interactivo de Wakanda</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .map {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .button {
+      position: absolute;
+      padding: 10px 15px;
+      background-color: #0077ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: transform 0.2s;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+    }
+
+    /* Posición de botones */
+    .education {
+      top: 30%;
+      left: 40%;
+    }
+
+    .energy {
+      top: 50%;
+      left: 60%;
+    }
+
+    .governance {
+      top: 70%;
+      left: 30%;
+    }
+
+    #riveCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none; /* Para no bloquear clics en los botones */
+    }
+  </style>
+</head>
+<body>
+<div id="riveCanvas"></div>
+<div class="container">
+  <img src="images/wakanda-map.jpg" alt="Mapa de Wakanda" class="map">
+
+  <!-- Botones sobre el mapa -->
+  <button class="button education" onclick="showService('Educación')">Educación</button>
+  <button class="button energy" onclick="showService('Energía')">Energía</button>
+  <button class="button governance" onclick="showService('Gobierno')">Gobierno</button>
+</div>
+</body>
+</html>
