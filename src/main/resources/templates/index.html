@@ -57,6 +57,26 @@
       left: 30%;
     }
 
+    .traf{
+
+    }
+
+    .resi{
+
+    }
+
+    .ocio{
+
+    }
+
+    .vigilancia{
+
+    }
+
+    .wifi{
+
+    }
+
     #riveCanvas {
       position: fixed;
       top: 0;
@@ -72,7 +92,13 @@
 <div class="container">
   <img src="images/wakanda-map.jpg" alt="Mapa de Wakanda" class="map">
 
-  <!-- Botones sobre el mapa -->
+  <button class="button vigilancia" onclick="showService('Vigilancia')">Vigilancia</button>
+  <button class="button wifi" onclick="showService('WiFi')">WiFi</button>
+
+  <button class="button ocio" onclick="showService('Ocio')">Ocio</button>
+  <button class="button resi" onclick="showService('Residuos')">Residuos</button>
+  <button class="button traf" onclick="showService('Trafico')">Trafico</button>
+
   <button class="button education" onclick="showService('Educación')">Educación</button>
   <button class="button energy" onclick="showService('Energía')">Energía</button>
   <button class="button governance" onclick="showService('Gobierno')">Gobierno</button>
