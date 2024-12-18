@@ -79,3 +79,38 @@ gobierno-service:
     server:
       port: 8089
 
+# Microservicio Emergencias
+emergencias-service:
+  spring:
+    application:
+      name: emergencias-service
+    server:
+      port: 8090
+
+# Microservicio transporte
+transporte-service:
+  spring:
+    application:
+      name: transporte-service
+    server:
+      port: 8091
+
+# Microservicio salud
+salud-service:
+  spring:
+    application:
+      name: salud-service
+    server:
+      port: 8092
+
+# Microservicio agua
+agua-service:
+  spring:
+    application:
+      name: agua-service
+    server:
+      port: 8093
+
+
+
+

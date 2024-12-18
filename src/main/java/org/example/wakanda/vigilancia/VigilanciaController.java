@@ -1,11 +1,13 @@
 package org.example.wakanda.vigilancia;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
 @RestController
+@RequestMapping("/vigilancia")
 public class VigilanciaController {
 
     private final VigilanciaService vigilanciaService;

@@ -1,107 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapa Interactivo de Wakanda</title>
+  <title>Simulación Ciudad Inteligente</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
-      overflow: hidden;
-      background-color: #000;
+      text-align: center;
+      margin: 20px;
     }
-
-    .container {
+    .map-container {
       position: relative;
-      width: 100vw;
-      height: 100vh;
+      display: inline-block;
+      width: 600px;
+      height: 400px;
+      background-image: url('images/wakanda-map.jpg');
+      background-size: cover;
     }
-
-    .map {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
     .button {
       position: absolute;
-      padding: 10px 15px;
-      background-color: #0077ff;
-      color: white;
-      border: none;
-      border-radius: 5px;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border: 1px solid #ccc;
       cursor: pointer;
-      font-size: 14px;
-      transition: transform 0.2s;
     }
-
-    .button:hover {
-      transform: scale(1.1);
-    }
-
-    /* Posición de botones */
-    .education {
-      top: 30%;
-      left: 40%;
-    }
-
-    .energy {
-      top: 50%;
-      left: 60%;
-    }
-
-    .governance {
-      top: 70%;
-      left: 30%;
-    }
-
-    .traf{
-
-    }
-
-    .resi{
-
-    }
-
-    .ocio{
-
-    }
-
-    .vigilancia{
-
-    }
-
-    .wifi{
-
-    }
-
-    #riveCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none; /* Para no bloquear clics en los botones */
+    #status {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      background-color: #f4f4f4;
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
 <body>
-<div id="riveCanvas"></div>
-<div class="container">
-  <img src="images/wakanda-map.jpg" alt="Mapa de Wakanda" class="map">
 
-  <button class="button vigilancia" onclick="showService('Vigilancia')">Vigilancia</button>
-  <button class="button wifi" onclick="showService('WiFi')">WiFi</button>
+<h1>Ciudad Inteligente</h1>
 
-  <button class="button ocio" onclick="showService('Ocio')">Ocio</button>
-  <button class="button resi" onclick="showService('Residuos')">Residuos</button>
-  <button class="button traf" onclick="showService('Trafico')">Trafico</button>
-
-  <button class="button education" onclick="showService('Educación')">Educación</button>
-  <button class="button energy" onclick="showService('Energía')">Energía</button>
-  <button class="button governance" onclick="showService('Gobierno')">Gobierno</button>
+<div class="map-container">
+  <button class="button" style="top: 50px; left: 50px;" onclick="getWaterStatus()">Estado del Agua</button>
+  <button class="button" style="top: 100px; left: 150px;" onclick="getEducationStatus()">Estado de Educación</button>
+  <button class="button" style="top: 150px; left: 250px;" onclick="getEmergencyStatus()">Estado de Emergencias</button>
+  <button class="button" style="top: 200px; left: 350px;" onclick="getGobiernoStatus()">Estado del Gobierno</button>
+  <button class="button" style="top: 250px; left: 450px;" onclick="getLightStatus()">Estado de la Luz</button>
+  <button class="button" style="top: 300px; left: 550px;" onclick="getOcioStatus()">Estado del Ocio</button>
+  <button class="button" style="top: 350px; left: 650px;" onclick="getWasteStatus()">Estado de los Residuos</button>
+  <button class="button" style="top: 400px; left: 750px;" onclick="getHealthStatus()">Estado de Salud</button>
+  <button class="button" style="top: 450px; left: 850px;" onclick="getTrafficStatus()">Estado del Tráfico</button>
+  <button class="button" style="top: 500px; left: 950px;" onclick="getTransportStatus()">Estado del Transporte</button>
+  <button class="button" style="top: 550px; left: 1050px;" onclick="getSurveillanceStatus()">Estado de Vigilancia</button>
+  <button class="button" style="top: 600px; left: 1150px;" onclick="getWifiStatus()">Estado del Wifi</button>
 </div>
+
+<div id="status">
+  <h3>Estado del Servicio</h3>
+  <div id="response"></div>
+</div>
+
+<script>
+
+  //Función para obtener el estado del agua
+  function getWaterStatus() {
+    fetch('http://localhost:8761/agua/sensores')
+            .then(response => response.json())
+            .then(data => {
+              displayResponse(data);
+            })
+            .catch(error => {
+              displayResponse({error: "Error al conectar con el servicio de agua"});
+            });
+  }
+
+  // Función para obtener el estado de la educación
+  function getEducationStatus() {
+    fetch('http://localhost:8761/education/campus')
+            .then(response => response.json())
+            .then(data => {
+              displayResponse(data);
+            })
+            .catch(error => {
+              displayResponse({error: "Error al conectar con el servicio de educación"});
+            });
+  }
+
+  // Función para obtener el estado de las emergencias
+  function getEmergencyStatus() {
+    fetch('http://localhost:8761/emergencias/')
+            .then(response => response.json())
+            .then(data => {
+              displayResponse(data);
+            })
+            .catch(error => {
+              displayResponse({error: "Error al conectar con el servicio de emergencias"});
+            });
+  }
+
+  // Función para obtener el estado del gobierno
+  function getGobiernoStatus() {
+    fetch('http://localhost:8761/gobierno/proyectos')
+            .then(response => response.json())
+            .then(data => {
+              displayResponse(data);
+            })
+            .catch(error => {
+              displayResponse({error: "Error al conectar con el servicio del gobierno"});
+            });
+  }
+
+  // Función para obtener el estado de la luz
+  function getLightStatus() {
+    fetch('http://localhost:8761/luz/publica')
+            .then(response => response.json())
+            .then(data => {
+              displayResponse(data);
+            })
+            .catch(error => {
+              displayResponse({error: "Error al conectar con el servicio de luz"});
+            });
+  }
+
+  // Función para obtener el estado del ocio
+  function getOcioStatus() {
+    fetch('http://localhost:8761/ocio/eventos')
+            .then(response => response.json())
+            .then(data => {
+              displayResponse(data);
+            })
+            .catch(error => {
+              displayResponse({error: "Error al conectar con el servicio de ocio"});
+            });
+  }
+
+  // Función para obtener el estado de los residuos
+  function getWasteStatus() {
+    fetch('http://localhost:8761/waste/recycling-centers')
+            .then(response => response.json())
+            .then(data => {
+              displayResponse(data);
+            })
+            .catch(error => {
+              displayResponse({error: "Error al conectar con el servicio de residuos"});
+            });
+  }
+
+  // Función para obtener el estado de la salud
+  function getHealthStatus() {
+    fetch('http://localhost:8761/salud/dispositivos')
+            .then(response => response.json())
+            .then(data => {
+              displayResponse(data);
+            })
+            .catch(error => {
+              displayResponse({error: "Error al conectar con el servicio de salud"});
+            });
+  }
+
+  // Función para obtener el estado del tráfico
+  function getTrafficStatus() {
+    fetch('http://localhost:8761/trafico/traffic-status')
+            .then(response => response.json())
+            .then(data => {
+              displayResponse(data);
+            })
+            .catch(error => {
+              displayResponse({error: "Error al conectar con el servicio de tráfico"});
+            });
+  }
+
+  // Función para obtener el estado del transporte
+  function getTransportStatus() {
+    fetch('http://localhost:8761/transporte/rutas')
+            .then(response => response.json())
+            .then(data => {
+              displayResponse(data);
+            })
+            .catch(error => {
+              displayResponse({error: "Error al conectar con el servicio de transporte"});
+            });
+  }
+
+  // Función para obtener el estado de la vigilancia
+  function getSurveillanceStatus() {
+    fetch('http://localhost:8761/vigilancia/camaras')
+            .then(response => response.json())
+            .then(data => {
+              displayResponse(data);
+            })
+            .catch(error => {
+              displayResponse({error: "Error al conectar con el servicio de vigilancia"});
+            });
+  }
+
+  // Función para obtener el estado del wifi
+  function getWifiStatus() {
+    fetch('http://localhost:8761/wifi/public-wifi')
+            .then(response => response.json())
+            .then(data => {
+              displayResponse(data);
+            })
+            .catch(error => {
+              displayResponse({error: "Error al conectar con el servicio de wifi"});
+            });
+  }
+
+  // Función para mostrar la respuesta en la página
+  function displayResponse(data) {
+    const responseDiv = document.getElementById('response');
+    responseDiv.innerHTML = ''; // Limpiar respuestas anteriores
+
+    if (data.error) {
+      responseDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
+    } else {
+      for (const [key, value] of Object.entries(data)) {
+        responseDiv.innerHTML += `<p><strong>${key}:</strong> ${value}</p>`;
+      }
+    }
+  }
+</script>
+
 </body>
 </html>

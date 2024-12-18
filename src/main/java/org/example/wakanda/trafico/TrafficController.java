@@ -1,11 +1,13 @@
 package org.example.wakanda.trafico;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
 @RestController
+@RequestMapping("/trafico")
 public class TrafficController {
 
     private final TrafficService trafficService;
