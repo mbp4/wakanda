@@ -17,9 +17,13 @@ Esta aplicación tiene como objetivo simular una ciudad inteligente gestionada m
 El proyecto está construido usando:
 
 -> **Java** - Para la lógica del servidor y back-end.
+
 -> **Spring Boot** - Para facilitar el desarrollo de aplicaciones Java basadas en Spring.
+
 -> **Maven** - Para gestionar las dependencias y la construcción del proyecto.
+
 -> **HTML/CSS/JavaScript** - Para la creación de la interfaz de usuario.
+
 -> **Thymeleaf** - Para renderizar las vistas del lado del servidor en la aplicación web.
 
 ## 📁 Estructura del proyecto
